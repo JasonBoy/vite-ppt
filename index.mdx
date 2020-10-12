@@ -1,19 +1,94 @@
 import Button from './components/Button'
 import ImageUnbundled from './components/ImageUnbundled'
 
-<!-- import { yellow } from '@mdx-deck/themes'-->
+import { highlight, future } from '@mdx-deck/themes'
+
 <!-- export const theme = yellow-->
 
-## Hello
+export const theme = {
+  ...future,
+  ...highlight
+}
 
-<Button>submit</Button>
+## Vite
+
+<p>无打包开发模式, 基于原生ES Module imports</p>
 
 ---
 
-## Unbundled development
+### Vite特点
+
+- 启动飞快
+- vue按需编译
+- 实时HMR
+- 本地https/2
+
+---
+
+### 启动飞快，无需打包
 
 <ImageUnbundled/>
 
 ---
 
-## The End
+### vue按需编译
+
+- 模块路径rewrite
+- 浏览器import对应组件，服务端按需编译vue组件
+- node_modules库:
+  ```js highlight-line="1"
+  import Vue from 'vue
+  // ->
+  import Vue from '/@modules/vue.js'
+  ```
+- vue组件 -> script import 请求
+
+                       -> script里import 对应template请求
+                       -> script里import 对应style请求
+
+---
+
+### 实时HMR
+
+- 基于ES Module的HMR
+- 单模块缓存
+
+---
+
+### Vite HMR基本流程
+
+```
+                                                file-change
+                         update type/time/path       |
+        vite/client    <-----------ws---------- node-server
+            |          ----------------------->
+            |          get new modules/template
+            |
+__VUE_HMR_RUNTIME__.reload/rerender...
+            |
+            |
+         vue app
+```
+
+---
+
+### 本地https/2
+
+- mkcert 生成本地浏览器信任证书
+
+  ```bash
+    mkcert -install && mkcert local.bilibili.com localhost
+  ```
+
+- http2 Server Push
+
+---
+
+### 其他类似工具
+
+- Snowpack(https://www.snowpack.dev/)
+- es-dev-server(https://open-wc.org/developing/es-dev-server.html)
+
+---
+
+### 没了
