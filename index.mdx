@@ -7,7 +7,12 @@ import { highlight, future } from '@mdx-deck/themes'
 
 export const theme = {
   ...future,
-  ...highlight
+  ...highlight,
+  text: {
+    heading: {
+      textTransform: `none`
+    },
+  }
 }
 
 ## Vite
@@ -16,7 +21,7 @@ export const theme = {
 
 ---
 
-### Vite特点
+### Vite 特点
 
 - 启动飞快
 - vue按需编译
