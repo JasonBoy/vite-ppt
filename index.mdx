@@ -14,6 +14,15 @@ export const theme = {
   }
 }
 
+## 背景
+
+<Steps>
+  <li>每次启动dev server要等半天</li>
+  <li>2020年了还在打包编译成cjs, 无法充分利用浏览器ES Module</li>
+</Steps>
+
+---
+
 ## Vite
 
 <p>无打包开发模式, 基于原生ES Module</p>
@@ -22,7 +31,7 @@ export const theme = {
 
 ### Vite 特点
 
-- 启动飞快
+- 启动飞快, 基本1s之内
 - vue按需编译
 - ESM HMR
 - 本地https/2
@@ -39,6 +48,7 @@ export const theme = {
 
 - 模块路径rewrite
 - 浏览器import对应组件，服务端按需编译vue组件
+- 单文件编译更利于缓存，便于debug
 - node_modules库:
   ```js
   import Vue from 'vue' -> import Vue from '/@modules/vue.js'
